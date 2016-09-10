@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding= "UTF-8" ?>
+
+<!-- 
+	MyBatis에서는 SQL문을 저장하는 존재를 mapper라는 용어로 표현
+	XML 작성되는 Mapper파일을 Java로 작성된 클래스와 경로를 분리해 주기 위해 resourcees같은 경로를 이용
+ -->
+
+<!-- Mybatis를 사용하기 위한 DTD -->
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+
+<!-- namespace는 자바의 패키지와 비슷한 거로 원하는 SQL문을 찾아서 실행할 떄 동작한다. -->
+<!-- UpdateDB에서  
+List<HashMap<String, String>> outputs = sqlSession.selectList("userControlMapper.client_update", input);
+으로 사용하고 있다. -->
+<mapper namespace= "userControlMapper" >
+    <select id ="client_check" parameterType="java.util.HashMap" resultType= "java.util.HashMap">
+        SELECT * FROM StateDB WHERE user = #{user_key}
+    </select>
+
+    <insert id ="client_insert" parameterType="java.util.HashMap" >
+        INSERT INTO StateDB (user, state) VALUES ( #{user_key}, 0)
+    </insert>
+    
+    <update id="client_update" parameterType="java.util.HashMap" >
+    	UPDATE StateDB SET state = #{current_location} WHERE user = #{user_key}
+    </update>
+    
+    <select id ="client_res_check" parameterType="java.util.HashMap" resultType= "java.util.HashMap">
+        SELECT * FROM haneum.ReservationDB where user= #{user_key};
+    </select>
+    
+</mapper>
+<!-- 규칙 -->
+<!-- 
+1. #{num}은 VO의 getNum() 혹은 SetNum을 의미
+2. 파라미터가  Map 타입인 경우 #{num}은 Map객체의 키 값이 'num'인 것을 찾는다.
+ -->
