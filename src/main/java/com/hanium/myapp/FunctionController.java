@@ -2,11 +2,12 @@ package com.hanium.myapp;
 
 import com.hanium.myapp.GPS.MyLocation.MyLocation;
 import com.hanium.myapp.GPS.Terminal_Location.Terminal_Location;
+import com.hanium.myapp.Reservation.ReservationController;
 import com.haniumpkg.myapp.KeyboardAndMessageVO;
 
 public class FunctionController {
 	private String text; 
-	private int location;
+
 	
 	public KeyboardAndMessageVO getSystemAnswerMsgAndKeyboard(int currentUserState, String userAnswerString)
 	{
@@ -17,7 +18,8 @@ public class FunctionController {
 		{	
 
 			case 1:
-				
+				ReservationController reservationController = new ReservationController(currentUserState, userAnswerString);
+				keyboardAndMessageVO = reservationController.getKeyboardAndMessageVO();
 				break;
 				
 			case 2:
