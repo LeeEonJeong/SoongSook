@@ -9,7 +9,7 @@ public class FunctionController {
 	private String text; 
 
 	
-	public KeyboardAndMessageVO getSystemAnswerMsgAndKeyboard(int currentUserState, String userAnswerString)
+	public KeyboardAndMessageVO getSystemAnswerMsgAndKeyboard(int currentUserState, String userAnswerString, String user_key)
 	{
 		currentUserState = currentUserState/1000;
 		KeyboardAndMessageVO keyboardAndMessageVO = new KeyboardAndMessageVO();
@@ -18,7 +18,7 @@ public class FunctionController {
 		{	
 
 			case 1:
-				ReservationController reservationController = new ReservationController(currentUserState, userAnswerString);
+				ReservationController reservationController = new ReservationController(currentUserState, userAnswerString, user_key);
 				keyboardAndMessageVO = reservationController.getKeyboardAndMessageVO();
 				break;
 				

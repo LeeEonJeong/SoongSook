@@ -63,7 +63,7 @@ public class HomeController {
 		
 		FunctionController functionController = new FunctionController();
 		KeyboardAndMessageVO answerKeyboardAndMessage = 
-				functionController.getSystemAnswerMsgAndKeyboard(currentState, parsingContent);
+				functionController.getSystemAnswerMsgAndKeyboard(currentState, parsingContent, parsingUserkey);
 			
 		UpdateDB update = new UpdateDB(parsingUserkey, currentState, sqlSession);
 				
