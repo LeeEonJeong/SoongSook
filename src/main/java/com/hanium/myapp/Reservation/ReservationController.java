@@ -14,7 +14,7 @@ public class ReservationController {
 	public ReservationController (int currentUserState, String userAnswerString, String userKey) {
 		this.currentUserState = currentUserState;
 		this.userAnswerString = userAnswerString;
-		reservationDB = new reservationDB(currentUserState, userAnswerString, userKey);
+		reservationDB = new ReservationDB(currentUserState, userAnswerString, userKey);
 		String reservationConfirm = reservationDB.getReservationConfirm();
 		analysisState();
 	}
