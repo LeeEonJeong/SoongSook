@@ -25,7 +25,7 @@ public class FunctionController {
 			case 2:
 				break;
 				
-			case 3: //kkkkk
+			case 3: 
 				break;
 				
 			default:
