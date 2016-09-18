@@ -14,8 +14,8 @@ public class ReservationController {
 	public ReservationController (int currentUserState, String userAnswerString, String userKey) {
 		this.currentUserState = currentUserState;
 		this.userAnswerString = userAnswerString;
-		reservationDB = new ReservationDB(currentUserState, userAnswerString, userKey);
-		String reservationConfirm = reservationDB.getReservationConfirm();
+		//reservationDB = new reservationDB(currentUserState, userAnswerString, userKey);
+		//String reservationConfirm = reservationDB.getReservationConfirm();
 		analysisState();
 	}
 
@@ -23,7 +23,6 @@ public class ReservationController {
 		int reservationMethod = currentUserState/10;
 		switch(reservationMethod) {
 			case entireReservation:
-				
 				break;
 		}
 	}
