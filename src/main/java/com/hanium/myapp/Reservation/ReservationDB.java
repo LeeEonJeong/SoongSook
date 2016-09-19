@@ -68,5 +68,6 @@ public class ReservationDB {
 	private void splitAndSaveInline(){
 		String[] reservationLine = new String[6];
 		reservationLine = userAnswerString.split(".");
+		
 	}
 }
