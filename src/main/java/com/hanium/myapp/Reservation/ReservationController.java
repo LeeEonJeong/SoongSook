@@ -55,11 +55,11 @@ public class ReservationController {
 					reservationSelection();
 				break;
 			case busSelection:
-					messageVOString = "¿øÇÏ´Â ¹ö½º ¹øÈ£¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä";
+					messageVOString = "ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È£ï¿½ï¿½ ï¿½Ô·ï¿½ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½";
 				break;
 				
 			case seatSelection:
-					messageVOString = "¿øÇÏ´Â ÁÂ¼® ¹øÈ£¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä";
+					messageVOString = "ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½Â¼ï¿½ ï¿½ï¿½È£ï¿½ï¿½ ï¿½Ô·ï¿½ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½";
 				break;
 				
 			case paymentSelection:
@@ -67,15 +67,15 @@ public class ReservationController {
 				break;
 				
 			case reservationComplete:
-					messageVOString = "À§¿Í °°ÀÌ ¿¹¾àÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù.";
+					messageVOString = "ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ï·ï¿½Ç¾ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.";
 				break;
 	
 			case setFavoriteReservation:
-					messageVOString = "Áñ°ÜÃ£±â¿¡ ³ÖÀ¸½Ã°Ú½À´Ï±î?";
+					messageVOString = "ï¿½ï¿½ï¿½Ã£ï¿½â¿¡ ï¿½ï¿½ï¿½ï¿½ï¿½Ã°Ú½ï¿½ï¿½Ï±ï¿½?";
 				break;
 			
 			case setAlarm:
-					messageVOString = "¾Ë¶÷¼³Á¤À» ÇÏ½Ã°Ú½À´Ï±î?";
+					messageVOString = "ï¿½Ë¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ï½Ã°Ú½ï¿½ï¿½Ï±ï¿½??";
 				break;
 			default:
 				break;
@@ -85,35 +85,35 @@ public class ReservationController {
 	private void setPaymentString() {
 		switch(currentUserState) {
 			case 1411:
-					messageVOString = "½Å¿ëÄ«µå Á¾·ù¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä";
+					messageVOString = "ï¿½Å¿ï¿½Ä«ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½";
 				break;
 			case 1412:
-					messageVOString = "Ä«µå ¹øÈ£¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä";
+					messageVOString = "Ä«ï¿½ï¿½ ï¿½ï¿½È£ï¿½ï¿½ ï¿½Ô·ï¿½ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½";
 				break;
 			
 			case 1413:
-					messageVOString = "À¯È¿±â°£À» ÀÔ·ÂÇØÁÖ¼¼¿ä(MMYY)";
+					messageVOString = "ï¿½ï¿½È¿ï¿½â°£ï¿½ï¿½ ï¿½Ô·ï¿½ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½(MMYY)";
 				break;
 			case 1414:
-					messageVOString = "ºñ¹Ð¹øÈ£ ¾Õ µÎÀÚ¸®¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä";
+					messageVOString = "ï¿½ï¿½Ð¹ï¿½È£ ï¿½ï¿½ ï¿½ï¿½ï¿½Ú¸ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½";
 				break;
 			case 1415:
-					messageVOString = "ÁÖ¹Îµî·Ï¹øÈ£ ¾Õ 6ÀÚ¸®¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä";
+					messageVOString = "ï¿½Ö¹Îµï¿½Ï¹ï¿½È£ ï¿½ï¿½ 6ï¿½Ú¸ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½";
 				break;
 				
 			case 1421:
-					messageVOString = "Åë½Å»ç¸¦ ¼±ÅÃÇØÁÖ¼¼¿ä";
+					messageVOString = "ï¿½ï¿½Å»ç¸¦ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½";
 					keyboardVO.addMenu("SKT", "KT", "LG");
 					
 				break;
 			case 1422:
-					messageVOString = "ÇÚµåÆù¹øÈ£¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä";
+					messageVOString = "ï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½È£ï¿½ï¿½ ï¿½Ô·ï¿½ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½";
 				break;
 			case 1423:
-					messageVOString = "ÁÖ¹Îµî·Ï¹øÈ£ ¾Õ 6ÀÚ¸®¿Í µÚ 1ÀÚ¸®¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä";
+					messageVOString = "ï¿½Ö¹Îµï¿½Ï¹ï¿½È£ ï¿½ï¿½ 6ï¿½Ú¸ï¿½ï¿½ï¿½ ï¿½ï¿½ 1ï¿½Ú¸ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½";
 				break;
 			case 1424:
-					messageVOString = "ÀÎÁõ¹øÈ£°¡ ¹ß½ÅµÇ¾ú½À´Ï´Ù. ¼ö½ÅÇÏ½Ã¸é ÀÔ·ÂÇØÁÖ¼¼¿ä";
+					messageVOString = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È£ï¿½ï¿½ ï¿½ß½ÅµÇ¾ï¿½ï¿½ï¿½ï¿½Ï´ï¿½. ï¿½ï¿½ï¿½ï¿½ï¿½Ï½Ã¸ï¿½ ï¿½Ô·ï¿½ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½";
 				break;
 			case 1425:
 					messageVOString = "";
@@ -144,37 +144,37 @@ public class ReservationController {
 	}
 
 	private void setMsgForFavoriteReservation() {
-		messageVOString = "Áñ°ÜÃ£±â ¹øÈ£¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä";
+		messageVOString = "ï¿½ï¿½ï¿½Ã£ï¿½ï¿½ ï¿½ï¿½È£ï¿½ï¿½ ï¿½Ô·ï¿½ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½";
 	}
 
 	private void setMsgForEntireReservation() {
-		messageVOString = "Ãâ¹ßÅÍ¹Ì³Î.µµÂø³Ê¹Ì³Î.Ãâ¹ß³¯Â¥.µî±Þ.¾î¸¥¸Å¼ö.¾Æµ¿¸Å¼ö ¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä\n(¿¹: µ¿¼­¿ïÅÍ¹Ì³Î.ºÎ»êÅÍ¹Ì³Î.07.12.¿ìµî.2.3)";
+		messageVOString = "ï¿½ï¿½ï¿½ï¿½Í¹Ì³ï¿½.ï¿½ï¿½ï¿½ï¿½ï¿½Ê¹Ì³ï¿½.ï¿½ï¿½ß³ï¿½Â¥.ï¿½ï¿½ï¿½.ï¿½î¸¥ï¿½Å¼ï¿½.ï¿½Æµï¿½ï¿½Å¼ï¿½ ï¿½ï¿½ ï¿½Ô·ï¿½ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½\n(ï¿½ï¿½: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¹Ì³ï¿½.ï¿½Î»ï¿½ï¿½Í¹Ì³ï¿½.07.12.ï¿½ï¿½ï¿½.2.3)";
 	}
 
 	private void setMsgForLocationResertavtion() {
 		switch(currentUserState) {
 			case 1120:
-					messageVOString = "Ãâ¹ßÁö¿ªÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä";
+					messageVOString = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½";
 				break;
 				
 			case 1121:
-					messageVOString = "Ãâ¹ßÅÍ¹Ì³ÎÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä";
+					messageVOString = "ï¿½ï¿½ï¿½ï¿½Í¹Ì³ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½";
 				break;
 				
 			case 1122:
-					messageVOString = "µµÂøÁö¿ªÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä";
+					messageVOString = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½";
 				break;
 			
 			case 1123:
-					messageVOString = "µµÂøÅÍ¹Ì³ÎÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä";
+					messageVOString = "ï¿½ï¿½ï¿½ï¿½ï¿½Í¹Ì³ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½";
 				break;
 				
 			case 1124:
-					messageVOString = "Ãâ¹ß³¯Â¥¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä";
+					messageVOString = "ï¿½ï¿½ß³ï¿½Â¥ï¿½ï¿½ ï¿½Ô·ï¿½ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½";
 				break;
 			
 			case 1125:
-					messageVOString = "µî±Þ.¾î¸¥¸Å¼ö.¾Æµ¿¸Å¼öÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä\n(¿¡:¿ìµî.2.3)";
+					messageVOString = "ï¿½ï¿½ï¿½.ï¿½î¸¥ï¿½Å¼ï¿½.ï¿½Æµï¿½ï¿½Å¼ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½\n(ï¿½ï¿½:ï¿½ï¿½ï¿½.2.3)";
 				break;
 			
 			case 1126:
