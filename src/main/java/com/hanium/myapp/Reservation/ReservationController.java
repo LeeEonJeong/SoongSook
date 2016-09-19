@@ -9,10 +9,6 @@ public class ReservationController {
 	private KeyboardVO keyboardVO;
 	private String messageVOString;
 	private int currentUserState;
-	private int previousUserState;
-	private String userAnswerString;
-	private String userKey;
-	private ReservationDB reservationDB;
 	private final static int entireReservation = 111;
 	private final static int locationReservation = 112;
 	private final static int favoriteReservation = 113;
@@ -27,25 +23,27 @@ public class ReservationController {
 	
 	public ReservationController (int previousUserState, int currentUserState, String userAnswerString, String userKey) {
 		this.currentUserState = currentUserState;
-		this.userAnswerString = userAnswerString;
-		this.previousUserState = previousUserState;
 		
-		if(ErrorCheck.errorCheck(currentUserState, userKey)) {
-			//reservationDB = new ReservationDB(currentUserState, userAnswerString, userKey);
+		if(ErrorCheck.isNoError(previousUserState, userAnswerString)) {
+			//ReservationDB reservationDB = new ReservationDB(currentUserState, userAnswerString, userKey);
 			//String reservationConfirm = reservationDB.getReservationConfirm();
 			keyboardVO = new KeyboardVO();
 			analysisState();
-			//setSystemAnswer(reservationConfirm);
+			//setSystemAnswer(reservationConfirm+messageVO);
 		}
 		else {
-			
+			setErrorSystemAnswer();
 		}
-		
 		
 	}
 
-	private void setSystemAnswer(String reservationConfirm) {
-		MessageVO messageVO = new MessageVO(reservationConfirm + messageVOString);
+	private void setErrorSystemAnswer() {
+		MessageVO messageVO = new MessageVO("error");
+		keyboardAndMessageVO = new KeyboardAndMessageVO(keyboardVO, messageVO);
+	}
+
+	private void setSystemAnswer(String systemAnswerString) {
+		MessageVO messageVO = new MessageVO(systemAnswerString);
 		keyboardAndMessageVO = new KeyboardAndMessageVO(keyboardVO, messageVO);
 	}
 
