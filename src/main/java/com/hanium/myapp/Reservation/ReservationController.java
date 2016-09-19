@@ -9,6 +9,7 @@ public class ReservationController {
 	private KeyboardVO keyboardVO;
 	private String messageVOString;
 	private int currentUserState;
+	private int previousUserState;
 	private String userAnswerString;
 	private String userKey;
 	private ReservationDB reservationDB;
@@ -24,17 +25,20 @@ public class ReservationController {
 	private final static int setAlarm = 17;
 	
 	
-	public ReservationController (int currentUserState, String userAnswerString, String userKey) {
+	public ReservationController (int previousUserState, int currentUserState, String userAnswerString, String userKey) {
 		this.currentUserState = currentUserState;
 		this.userAnswerString = userAnswerString;
-		//error 
-		if(ErrorCheck.errorCheck(currentUserState, userKey)) {
+		this.previousUserState = previousUserState;
 		
+		if(ErrorCheck.errorCheck(currentUserState, userKey)) {
 			//reservationDB = new ReservationDB(currentUserState, userAnswerString, userKey);
 			//String reservationConfirm = reservationDB.getReservationConfirm();
 			keyboardVO = new KeyboardVO();
 			analysisState();
 			//setSystemAnswer(reservationConfirm);
+		}
+		else {
+			
 		}
 		
 		

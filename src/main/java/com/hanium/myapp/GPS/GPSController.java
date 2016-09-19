@@ -4,7 +4,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.hanium.myapp.CurrentState_Templete;
 import com.hanium.myapp.KeyboardAndMessage_Templete;
-
+import com.hanium.myapp.GPS.MyLocation.MyLocation;
 import com.haniumpkg.myapp.KeyboardAndMessageVO;
 import com.haniumpkg.myapp.KeyboardVO;
 import com.haniumpkg.myapp.MessageVO;
@@ -45,19 +45,16 @@ public class GPSController extends KeyboardAndMessage_Templete implements Curren
 		}
 		
 		else
-			setno(GPS_tableOfcontent[0]);
-			
-		
-
-		
-		keyboardAndMessageVO.setMessage(messageVO);
-		keyboardAndMessageVO.setKeyboard(keyboardVO);
+			setUpdatedUserState(GPS_tableOfcontent[0]);
+					
+		keyboardAndMessageVO.setMessageVO(messageVO);
+		keyboardAndMessageVO.setKeyboardVO(keyboardVO);
 	}
 
 	@Override
-	public void setno(int no) {this.no = no;}
+	public void setUpdatedUserState(int no) {this.no = no;}
 
 	@Override
-	public int getno() {return this.no;}
+	public int getUpdatedUserState() {return this.no;}
 	
 }

@@ -14,19 +14,19 @@ public class KeyboardAndMessageVO {
 		this.messageVO = messageVO;
 	}
 	
-	public KeyboardVO getKeyboard() {
+	public KeyboardVO getKeyboardVO() {
 		return keyboardVO;
 	}
 
-	public void setKeyboard(KeyboardVO keyboardVO) {
+	public void setKeyboardVO(KeyboardVO keyboardVO) {
 		this.keyboardVO = keyboardVO;
 	}
 
-	public MessageVO getMessage() {
+	public MessageVO getMessageVO() {
 		return messageVO;
 	}
 
-	public void setMessage(MessageVO messageVO) {
+	public void setMessageVO(MessageVO messageVO) {
 		this.messageVO = messageVO;
 	}
 
