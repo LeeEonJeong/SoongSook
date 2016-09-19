@@ -16,6 +16,8 @@ public class MessageVO {
 		this.message_button = message_button;
 	}
 
+	public MessageVO() {}
+
 	public String getText() {
 		return text;
 	}
