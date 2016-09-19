@@ -25,11 +25,11 @@ public class ReservationController {
 		this.currentUserState = currentUserState;
 		
 		if(ErrorCheck.isNoError(previousUserState, userAnswerString)) {
-			//ReservationDB reservationDB = new ReservationDB(currentUserState, userAnswerString, userKey);
-			//String reservationConfirm = reservationDB.getReservationConfirm();
+			ReservationDB reservationDB = new ReservationDB(currentUserState, userAnswerString, userKey);
+			String reservationConfirm = reservationDB.getReservationConfirm();
 			keyboardVO = new KeyboardVO();
 			analysisState();
-			//setSystemAnswer(reservationConfirm+messageVO);
+			setSystemAnswer(reservationConfirm + messageVOString);
 		}
 		else {
 			setErrorSystemAnswer();
