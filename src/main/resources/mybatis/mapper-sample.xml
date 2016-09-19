@@ -35,6 +35,10 @@ List<HashMap<String, String>> outputs = sqlSession.selectList("userControlMapper
         SELECT * FROM haneum.ReservationDB where user= #{user_key};
     </select>
     
+    <update id="dep_location" parameterType="String" >
+    	UPDATE ReservationDB SET dep_ter = #{userAnswerString} WHERE user = #{user_key}
+    </update>
+    
 </mapper>
 <!-- 규칙 -->
 <!-- 
