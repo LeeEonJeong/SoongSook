@@ -43,9 +43,6 @@ public class ReservationController {
 	private void setSystemAnswer(String reservationConfirm) {
 		MessageVO messageVO = new MessageVO(reservationConfirm + messageVOString);
 		keyboardAndMessageVO = new KeyboardAndMessageVO(keyboardVO, messageVO);
-		reservationDB = new ReservationDB(currentUserState, userAnswerString, userKey);
-		String reservationConfirm = reservationDB.getReservationConfirm();
-		analysisState();
 	}
 
 	public void analysisState() {
