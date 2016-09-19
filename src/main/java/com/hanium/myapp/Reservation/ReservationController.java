@@ -52,7 +52,6 @@ public class ReservationController {
 			case reservationState:
 					reservationSelection();
 				break;
-			z
 			case busSelection:
 					messageVOString = "원하는 버스 번호를 입력해주세요";
 				break;
