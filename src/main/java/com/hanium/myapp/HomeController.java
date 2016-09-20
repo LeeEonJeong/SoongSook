@@ -80,10 +80,12 @@ public class HomeController {
 				
 		ObjectMapper mapper = new ObjectMapper();
 		String parsingjson = mapper.writeValueAsString(answerKeyboardAndMessage);
-		parsingjson = parsingjson.replace("message_Button", "message_button");
+
 		
 		logger.info(parsingjson);
+
 		return parsingjson;	
+
 	}
 	
 	

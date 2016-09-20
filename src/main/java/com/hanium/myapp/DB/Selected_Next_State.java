@@ -21,7 +21,10 @@ public class Selected_Next_State {
 		StringTokenizer st = new StringTokenizer(userAnswerString, ".");
 		
 		String Parse_Answer_Number = (String) (userAnswerString.contains(".") ? 
-				st.nextToken() : userAnswerString); 
+				st.nextToken() : userAnswerString);
+		
+		System.out.println("Parse_Answer_Number = " + Parse_Answer_Number);
+		
 	    HashMap<String, Integer> input = new HashMap<String, Integer>();
 		input.put("parent", currentUserState);
 		List<HashMap<String, Integer>> outputs = sqlSession.selectList("userControlMapper.next_state", input);

@@ -34,11 +34,11 @@ public class MessageVO {
 		this.photo = photo;
 	}
 
-	public MessageButtonVO getMessage_Button() {
+	public MessageButtonVO getmessage_button() {
 		return message_button;
 	}
 
-	public void setMessage_Button(MessageButtonVO message_button) {
+	public void setmessage_button(MessageButtonVO message_button) {
 		this.message_button = message_button;
 	}
 

@@ -64,7 +64,7 @@ public class Terminal_Location extends KeyboardAndMessageVO{
 				photo.setWidth(640);
 				photo.setHeight(480);
 				messageVO.setPhoto(photo);
-				messageVO.setMessage_Button(mb);
+				messageVO.setmessage_button(mb);
 				text = "터미널~\n";
 			}
 			

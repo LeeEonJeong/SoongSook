@@ -62,7 +62,7 @@ public class FunctionController extends KeyboardAndMessage_Templete implements C
 	public int getUpdatedUserState() {return this.updatedUserState;}
 
 	public boolean isNoError(KeyboardAndMessageVO keyboardAndMessageVO) {
-		if(keyboardAndMessageVO.getMessageVO().getText().equals("error"))
+		if(keyboardAndMessageVO.getMessage().getText().equals("error"))
 			return false;
 		else
 			return true;

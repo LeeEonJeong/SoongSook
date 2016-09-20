@@ -39,15 +39,15 @@ public class GPSController extends KeyboardAndMessage_Templete implements Curren
 			terminal = new Terminal_Location(currentUserState, userAnswerString);
 			text = terminal.gettext();
 			messageVO.setText(text);
-			messageVO.setMessage_Button(terminal.getMessageButton());
+			messageVO.setmessage_button(terminal.getMessageButton());
 			messageVO.setPhoto(terminal.getphoto());
 		}
 		
 		else
 			setUpdatedUserState(GPS_tableOfcontent[0]);
 					
-		keyboardAndMessageVO.setMessageVO(messageVO);
-		keyboardAndMessageVO.setKeyboardVO(keyboardVO);
+		keyboardAndMessageVO.setMessage(messageVO);
+		keyboardAndMessageVO.setKeyboard(keyboardVO);
 	}
 
 	@Override

@@ -1,10 +1,8 @@
 package com.haniumpkg.myapp;
-
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class KeyboardVO implements Serializable {
+public class KeyboardVO {
 	private String type ;
 	private List<String> buttons;
 
