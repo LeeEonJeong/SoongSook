@@ -75,9 +75,8 @@ public class HomeController {
 		FunctionController functionController = new FunctionController();
 		KeyboardAndMessageVO answerKeyboardAndMessage = 
 				functionController.getSystemAnswerMsgAndKeyboard(currentState, parsingContent, parsingUserkey, sqlSession);
-			
-		//System.out.println("currentstate = " + functionController.getno());
-		UpdateDB update = new UpdateDB(parsingUserkey, functionController.getno(), sqlSession);
+
+		UpdateDB update = new UpdateDB(parsingUserkey, functionController.getUpdatedUserState(), sqlSession);
 				
 		ObjectMapper mapper = new ObjectMapper();
 		String parsingjson = mapper.writeValueAsString(answerKeyboardAndMessage);

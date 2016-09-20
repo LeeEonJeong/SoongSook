@@ -22,7 +22,6 @@ import com.haniumpkg.myapp.MessageVO;
 import com.haniumpkg.myapp.PhotoVO;
 
 
-
 public class Terminal_Location extends KeyboardAndMessageVO{
 	
 	private String text = 

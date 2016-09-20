@@ -24,8 +24,8 @@ public class InitController extends KeyboardAndMessage_Templete{
 		MessageVO messageVO = new MessageVO(text);
 		KeyboardVO keyboardVO = null;
 		
-		keyboardAndMessageVO.setMessage(messageVO);
-		keyboardAndMessageVO.setKeyboard(keyboardVO);
+		keyboardAndMessageVO.setMessageVO(messageVO);
+		keyboardAndMessageVO.setKeyboardVO(keyboardVO);
 	}
 	
 }

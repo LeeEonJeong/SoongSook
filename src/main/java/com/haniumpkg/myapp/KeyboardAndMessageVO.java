@@ -8,19 +8,25 @@ public class KeyboardAndMessageVO {
 		// TODO Auto-generated constructor stub
 	}
 
-	public KeyboardVO getKeyboard() {
+	public KeyboardAndMessageVO(KeyboardVO keyboardVO, MessageVO messageVO) {
+		// TODO Auto-generated constructor stub
+		this.keyboardVO = keyboardVO;
+		this.messageVO = messageVO;
+	}
+	
+	public KeyboardVO getKeyboardVO() {
 		return keyboardVO;
 	}
 
-	public void setKeyboard(KeyboardVO keyboardVO) {
+	public void setKeyboardVO(KeyboardVO keyboardVO) {
 		this.keyboardVO = keyboardVO;
 	}
 
-	public MessageVO getMessage() {
+	public MessageVO getMessageVO() {
 		return messageVO;
 	}
 
-	public void setMessage(MessageVO messageVO) {
+	public void setMessageVO(MessageVO messageVO) {
 		this.messageVO = messageVO;
 	}
 
