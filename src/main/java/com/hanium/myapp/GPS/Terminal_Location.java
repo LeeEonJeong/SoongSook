@@ -23,15 +23,13 @@ import com.haniumpkg.myapp.PhotoVO;
 
 
 
-
-
 public class Terminal_Location extends KeyboardAndMessageVO{
 	
 	private String text = 
 			  "터미널 위치를 선택하셨습니다~\n" +
 			  "지역선택을 하세요~.\n\n" +
 			  "1. 서울특별시\n" +
-			  "2. 占쏙옙천 占쏙옙 占쏙옙竪�\n" + 
+			  "2. 인천광역시 및 경기도\n" + 
 			  "3. 占쏙옙占쏙옙占쏙옙\n" +
 			  "4. 占쏙옙占쏙옙 占쏙옙 占쏙옙청占쏙옙占쏙옙\n" +
 			  "5. 占쏙옙占쏙옙 占쏙옙 占쏙옙占쏢남듸옙\n" + 

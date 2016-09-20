@@ -1,14 +1,9 @@
 package com.hanium.myapp;
 
-import java.lang.reflect.Method;
-import java.text.DateFormat;
-import java.util.Date;
 import java.util.HashMap;
-import java.util.Locale;
 import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
+
 
 import org.apache.ibatis.session.SqlSession;
 import org.codehaus.jackson.map.ObjectMapper;
@@ -18,12 +13,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
+
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.SessionAttributes;
+
 
 import com.hanium.myapp.DB.UpdateDB;
 import com.hanium.myapp.DB.UserDBCheck;
@@ -36,7 +31,7 @@ import com.haniumpkg.myapp.KeyboardVO;
  */
 
 @Controller
-@SessionAttributes("next")
+
 
 public class HomeController {
 
@@ -46,18 +41,7 @@ public class HomeController {
 	
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {
-		logger.info("Welcome home! The client locale is {}.", locale);
-		
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		
-		String formattedDate = dateFormat.format(date);
-		
-		model.addAttribute("serverTime", formattedDate );
-		
-		return "home";
-	}
+	public String terminal() {return "terminal";}
 	
 	
 	@RequestMapping(value = "/keyboard", method = RequestMethod.GET, headers = "Accept=application/json; charset=utf-8")
@@ -85,7 +69,6 @@ public class HomeController {
 		String parsingContent = (String) jsonObject.get("content");
 		String parsingUserkey = (String) jsonObject.get("user_key");
 		
-
 		
 		int currentState = userStateCheck.getLastState();
 		
