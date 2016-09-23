@@ -31,18 +31,28 @@ public class Selected_Next_State {
 		Map<String, Integer> re = null;
 
 		
-		while(outputs.get(i)!=null)
+		if(outputs.size()!= 1)
+		{
+			while(outputs.get(i)!=null)
+			{
+				re = outputs.get(i);
+				int no = re.get("no");
+			
+				if(Integer.parseInt(Parse_Answer_Number) == i + 1)
+				{
+					result = no;
+					break;
+				}
+			
+				i++;
+			}
+		}
+		
+		else
 		{
 			re = outputs.get(i);
 			int no = re.get("no");
-			
-			if(Integer.parseInt(Parse_Answer_Number) == i + 1)
-			{
-				result = no;
-				break;
-			}
-			
-			i++;
+			result = no;
 		}
 			
 		System.out.println("Selected_Next_state = " + result);

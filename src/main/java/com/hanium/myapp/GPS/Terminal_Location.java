@@ -7,6 +7,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.Map;
 import java.util.StringTokenizer;
 
 
@@ -16,6 +17,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
+import com.hanium.myapp.HomeController;
 import com.haniumpkg.myapp.KeyboardAndMessageVO;
 import com.haniumpkg.myapp.MessageButtonVO;
 import com.haniumpkg.myapp.MessageVO;
@@ -29,19 +31,20 @@ public class Terminal_Location extends KeyboardAndMessageVO{
 			  "지역선택을 하세요~.\n\n" +
 			  "1. 서울특별시\n" +
 			  "2. 인천광역시 및 경기도\n" + 
-			  "3. 占쏙옙占쏙옙占쏙옙\n" +
-			  "4. 占쏙옙占쏙옙 占쏙옙 占쏙옙청占쏙옙占쏙옙\n" +
-			  "5. 占쏙옙占쏙옙 占쏙옙 占쏙옙占쏢남듸옙\n" + 
-			  "6. 占쏙옙占쏙옙溝占�\n" +
-			  "7. 占싸삼옙 占쏙옙 占쏙옙車껨占�\n" +
-			  "8. 占쎈구 占쏙옙 占쏙옙占싹듸옙\n";
+			  "3. 강원도\n" +
+			  "4. 대전광역시 및 충청남도\n" +
+			  "5. 충청북도\n" + 
+			  "6. 광주광역시 및 전라남도\n" +
+			  "7. 전라북도\n" +
+			  "8. 부산,울산, 경상남도\n" +
+	 		  "9. 대구광역시 및 경상북도\n";
 	
 	private ArrayList<String> Terminal_Name;
 	private MessageVO messageVO = new MessageVO();
 	private MessageButtonVO mb;
 	private PhotoVO photo;
 	
-	public Terminal_Location(int currentUserState, String userAnswerString) throws Exception, Exception
+	public Terminal_Location(String user_key, int currentUserState, String userAnswerString) throws Exception, Exception
 	{
 		
 		if(currentUserState >= 3110)
@@ -52,12 +55,13 @@ public class Terminal_Location extends KeyboardAndMessageVO{
 			//System.out.println("parse_number = " + parse_number);
 			
 			text = detail_terminal(parse_number);
+			
 			if(currentUserState >= 3120)
 			{
-			
+				Terminal_Name = HomeController.getUserSavingList(user_key);
 				String terminal_name = Terminal_Name.get(Integer.parseInt(parse_number) - 1);
 				
-				//System.out.println("terminal_name =" + terminal_name);
+				System.out.println("terminal_name =" + terminal_name);
 				mb = new MessageButtonVO("터미널", "http://111.118.36.170:5001/myapp/?terminal_name=" + terminal_name);
 				photo = new PhotoVO();
 				photo.setUrl("http://cfile215.uf.daum.net/image/232F0C39525BDA410ACAE3");
@@ -65,7 +69,9 @@ public class Terminal_Location extends KeyboardAndMessageVO{
 				photo.setHeight(480);
 				messageVO.setPhoto(photo);
 				messageVO.setmessage_button(mb);
-				text = "터미널~\n";
+				text =  "처음부터 다시 돌아갈려면 \"ㄱ\"를 누르세요." 
+						+ terminal_name + "를 선택하셨습니다.\n 길안내 여부를 받으시겠습니까? \n"
+						+ "1. 예 \n 2. 아니오.";
 			}
 			
 			else
@@ -123,49 +129,54 @@ public class Terminal_Location extends KeyboardAndMessageVO{
 	        switch(answer)
 	        {
 	        
-	        case "1" : //占쏙옙占쏙옙특占쏙옙占쏙옙
+	        case "1" : //서울특별시
 	        	xml_start = 15; xml_end = 24;
-	        	text = "占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙占싹셨쏙옙占싹댐옙.^^\n";
+	        	text = "서울특별시를 선택하셨습니다.^^\n";
 	        	break;
 	        	
-	        case "2" : //占쏙옙천 占쏙옙 占쏙옙竪�
+	        case "2" : //인천 및 경기도
 	        	xml_start = 24; xml_end = 69;
-	        	text = "占쏙옙천 占쏙옙 占쏙옙竪듸옙占� 占쏙옙占쏙옙占싹셨쏙옙占싹댐옙.^^\n";
+	        	text = "인천 및 경기도를 선택하셨습니다.^^\n";
 	        	break;
 	        	
-	        case "3" : //占쏙옙占쏙옙占쏙옙
+	        case "3" : //강원도
 	        	xml_start = 69; xml_end = 83;
-	        	text = "占쏙옙占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙占싹셨쏙옙占싹댐옙.^^\n";
+	        	text = "강원도를 선택하셨습니다.^^\n";
 	        	break;
 	        	
 	        case "4" : //占쏙옙占쏙옙 占쏙옙 占쏙옙청占쏙옙占쏙옙
 	        	xml_start = 83; xml_end = 120;
-	        	text  = "占쏙옙占쏙옙 占쏙옙 占쏙옙청占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙占싹셨쏙옙占싹댐옙.^^\n";
+	        	text  = "대전광역시 및 충청남도를 선택하셨습니다.^^\n";
 	        	break;
 	        	
 	        case "5" : //占쏙옙占쏙옙 占쏙옙 占쏙옙占쏢남듸옙
-	        	xml_start = 120; xml_end = 151;
-	        	text  = "占쏙옙占쏙옙 占쏙옙 占쏙옙占쏢남듸옙占쏙옙 占쏙옙占쏙옙占싹셨쏙옙占싹댐옙.^^\n";
+	        	xml_start = 120; xml_end = 139;
+	        	text  = "충청북도를 선택하셨습니다.^^\n";
 	        	break;
 	        	
-	        case "6" : //占쏙옙占쏙옙溝占�
+	        case "6" : //占쏙옙占쏙옙 占쏙옙 占쏙옙占쏢남듸옙
+	        	xml_start = 139; xml_end = 151;
+	        	text  = "광주 및 전라남도를 선택하셨습니다.^^\n";
+	        	break;
+	        	
+	        case "7" : //占쏙옙占쏙옙溝占�
 	        	xml_start = 151; xml_end = 169;
-	        	text  = "占쏙옙占쏙옙溝占쏙옙占� 占쏙옙占쏙옙占싹셨쏙옙占싹댐옙.^^\n";
+	        	text  = "전라북도를 선택하셨습니다.^^\n";
 	        	break;
 	        	
-	        case "7" : //占싸삼옙 占쏙옙 占쏙옙車껨占�
+	        case "8" : //占싸삼옙 占쏙옙 占쏙옙車껨占�
 	        	xml_start = 169; xml_end = 184;
-	        	text  = "占싸삼옙 占쏙옙 占쏙옙車껨占쏙옙占� 占쏙옙占쏙옙占싹셨쏙옙占싹댐옙.^^\n";
+	        	text  = "부산, 울산, 경상남도를 선택하셨습니다.^^\n";
 	        	break;
 	        	
-	        case "8" : //占쎈구 占쏙옙 占쏙옙占싹듸옙
+	        case "9" : //占쎈구 占쏙옙 占쏙옙占싹듸옙
 	        	xml_start = 295; xml_end = 322;
-	        	text  = "占쎈구 占쏙옙 占쏙옙占싹듸옙占쏙옙 占쏙옙占쏙옙占싹셨쏙옙占싹댐옙.^^\n";
+	        	text  = "대구광역시 및 경상북도를 선택하셨습니다.^^\n";
 	        	break;
 	        
 	        }
 	        
-	        text = text + gettext(items, xml_start, xml_end) + "00. 占쌘로곤옙占쏙옙";
+	        text = text + gettext(items, xml_start, xml_end);
 	        
 	       // System.out.println(text);
 	
@@ -184,11 +195,16 @@ public class Terminal_Location extends KeyboardAndMessageVO{
 		{
 			JSONObject item = (JSONObject) array.get(i);
 			String city = (String) item.get("terminalnm");
-			Terminal_Name.add(city);
-			text = text + String.valueOf(index) + ". " + city + "\n";
-			index++;
+			
+		//	if(city.contains("터미널"))
+		//	{
+				Terminal_Name.add(city);
+				text = text + String.valueOf(index) + ". " + city + "\n";
+				index++;
+		//	}
 		}
 		
+	//	HomeController.setUserSavingList("test", Terminal_Name);
 		return text;
 	}
 
@@ -198,12 +214,8 @@ public class Terminal_Location extends KeyboardAndMessageVO{
 	public String gettext() {return this.text;}
 	public MessageButtonVO getMessageButton() {return this.mb;}
 	public void setMessageButton(MessageButtonVO mb) {this.mb = mb;}
-
-
-
-
 	public PhotoVO getphoto() {return this.photo;}
-	
+	public ArrayList<String> getTerminal_name(){return this.Terminal_Name;}
 	
 }
 

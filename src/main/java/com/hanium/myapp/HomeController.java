@@ -1,9 +1,9 @@
 package com.hanium.myapp;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
-
 
 import org.apache.ibatis.session.SqlSession;
 import org.codehaus.jackson.map.ObjectMapper;
@@ -38,8 +38,8 @@ public class HomeController {
 	@Autowired
 	private SqlSession sqlSession;
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+	private static Map<String, ArrayList<String>> UserSavingList = new HashMap<String, ArrayList<String>>();
 	
-
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String terminal() {return "terminal";}
 	
@@ -60,7 +60,7 @@ public class HomeController {
 	@RequestMapping(value = "/message", method = RequestMethod.POST, headers = "Accept=application/json; charset=utf-8")
 	public @ResponseBody String MessageAPI(HttpServletRequest request) throws Exception {
 		
-
+		
 		RequestParsing sessionContent = new RequestParsing(request);
 		JSONParser parser = new JSONParser();
 		Object userObject = parser.parse(sessionContent.getrequestParsing());
@@ -123,4 +123,15 @@ public class HomeController {
 		return jsonObject;
 	}
 	
+	public static void setUserSavingList(String user, ArrayList<String> UserSavingList)
+	{HomeController.UserSavingList.put(user, UserSavingList);}
+	
+	public static ArrayList<String> getUserSavingList(String user)
+	{
+		ArrayList<String> tempArray = UserSavingList.get(user);
+		UserSavingList.remove(user);
+		return tempArray;
+	}
+
+
 }

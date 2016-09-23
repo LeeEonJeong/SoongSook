@@ -22,7 +22,11 @@ List<HashMap<String, String>> outputs = sqlSession.selectList("userControlMapper
     <select id ="next_state" parameterType="java.util.HashMap" resultType= "java.util.HashMap">
         SELECT * FROM ProcessDB WHERE parent = #{parent}
     </select>
-
+    
+    <select id ="back_state" parameterType="java.util.HashMap" resultType= "java.util.HashMap">
+        SELECT * FROM ProcessDB WHERE no = #{no}
+    </select>
+    
     <insert id ="client_insert" parameterType="java.util.HashMap" >
         INSERT INTO StateDB (user, state) VALUES ( #{user_key}, 0)
     </insert>
