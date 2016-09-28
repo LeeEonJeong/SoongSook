@@ -5,17 +5,19 @@ import com.hanium.myapp.DB.Selected_Next_State;
 import com.hanium.myapp.GPS.GPSController;
 import com.hanium.myapp.Reservation.ReservationController;
 import com.haniumpkg.myapp.KeyboardAndMessageVO;
-import com.haniumpkg.myapp.MessageVO;
 
-import javax.servlet.http.HttpServletResponse;
 
 import org.apache.ibatis.session.SqlSession;
-import org.json.simple.parser.ParseException;
+
 
 public class FunctionController extends KeyboardAndMessage_Templete implements CurrentState_Templete{
 	
 	private int updatedUserState;
 	private Selected_Next_State stateController;
+	@SuppressWarnings("unused")
+	private String user_key = "";
+	
+	public FunctionController(String user_key) {this.user_key = user_key;}
 	
 	public KeyboardAndMessageVO getSystemAnswerMsgAndKeyboard
 	(int previousUserState, String userAnswerString, String user_key, SqlSession sqlSession) throws Exception
@@ -25,21 +27,22 @@ public class FunctionController extends KeyboardAndMessage_Templete implements C
 		int currentUserState;
 		KeyboardAndMessageVO keyboardAndMessageVO = new KeyboardAndMessageVO();
 		
-		if(userAnswerString.contains("00"))
+		if(userAnswerString.equals("00")) //뒤로 가기
 		{
 			BackGoDB back = new BackGoDB(previousUserState, sqlSession);
 			selectedFunction = back.getbackState() / 1000;
 			currentUserState = back.getbackState();
 		}
 		
-		else if(userAnswerString.contains("ㄱ"))
+		else if(userAnswerString.equals("ㄱ")) //처음부터 다시 가기
 		{
 			selectedFunction = 0;
 			currentUserState = 0;
 		}
+		
 		else 
 		{
-			stateController = new Selected_Next_State(previousUserState, userAnswerString, sqlSession); 
+			stateController = new Selected_Next_State(previousUserState, userAnswerString, sqlSession, user_key); 
 			selectedFunction = stateController.getNextState() / 1000;
 			currentUserState = stateController.getNextState();
 		}
@@ -75,10 +78,8 @@ public class FunctionController extends KeyboardAndMessage_Templete implements C
 	}
 
 	@Override
-	public void setUpdatedUserState(int no) {
-		this.updatedUserState = no;
-	}
-
+	public void setUpdatedUserState(int no) { this.updatedUserState = no;}
+	
 	@Override
 	public int getUpdatedUserState() {return this.updatedUserState;}
 

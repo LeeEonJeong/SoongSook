@@ -2,6 +2,7 @@ package com.hanium.myapp;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
@@ -13,8 +14,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-
-
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -32,7 +31,6 @@ import com.haniumpkg.myapp.KeyboardVO;
 
 @Controller
 
-
 public class HomeController {
 
 	@Autowired
@@ -46,12 +44,13 @@ public class HomeController {
 	
 	@RequestMapping(value = "/keyboard", method = RequestMethod.GET, headers = "Accept=application/json; charset=utf-8")
 	public @ResponseBody KeyboardVO readKeyboard() throws Exception {
-
+		
 		KeyboardVO keyboardVO = new KeyboardVO();
 		keyboardVO.setType("buttons");
-		keyboardVO.addMenu("1. 예매");
-		keyboardVO.addMenu("2. 알람");
-		keyboardVO.addMenu("3. 위치 안내");
+		keyboardVO.addMenu("예매");
+		keyboardVO.addMenu("알람");
+		keyboardVO.addMenu("위치 안내");
+		
 		return keyboardVO;
 	}
 
@@ -59,20 +58,21 @@ public class HomeController {
 	
 	@RequestMapping(value = "/message", method = RequestMethod.POST, headers = "Accept=application/json; charset=utf-8")
 	public @ResponseBody String MessageAPI(HttpServletRequest request) throws Exception {
-		
+				
 		
 		RequestParsing sessionContent = new RequestParsing(request);
 		JSONParser parser = new JSONParser();
 		Object userObject = parser.parse(sessionContent.getrequestParsing());
 		JSONObject jsonObject = (JSONObject) userObject;
 		UserDBCheck userStateCheck = new UserDBCheck(request, jsonObject, logger, sqlSession); 
+	
 		String parsingContent = (String) jsonObject.get("content");
 		String parsingUserkey = (String) jsonObject.get("user_key");
 		
-		
 		int currentState = userStateCheck.getLastState();
 		
-		FunctionController functionController = new FunctionController();
+		FunctionController functionController = new FunctionController(parsingUserkey);
+		
 		KeyboardAndMessageVO answerKeyboardAndMessage = 
 				functionController.getSystemAnswerMsgAndKeyboard(currentState, parsingContent, parsingUserkey, sqlSession);
 
@@ -81,7 +81,6 @@ public class HomeController {
 		ObjectMapper mapper = new ObjectMapper();
 		String parsingjson = mapper.writeValueAsString(answerKeyboardAndMessage);
 
-		
 		logger.info(parsingjson);
 
 		return parsingjson;	
@@ -122,6 +121,8 @@ public class HomeController {
 
 		return jsonObject;
 	}
+	
+	
 	
 	public static void setUserSavingList(String user, ArrayList<String> UserSavingList)
 	{HomeController.UserSavingList.put(user, UserSavingList);}

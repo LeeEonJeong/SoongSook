@@ -4,7 +4,6 @@ import com.haniumpkg.myapp.KeyboardAndMessageVO;
 
 public class KeyboardAndMessage_Templete {
 	
-	private int no;
 	protected KeyboardAndMessageVO keyboardAndMessageVO;
 
 	

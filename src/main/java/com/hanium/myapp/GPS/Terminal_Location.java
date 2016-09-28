@@ -46,36 +46,34 @@ public class Terminal_Location extends KeyboardAndMessageVO{
 	
 	public Terminal_Location(String user_key, int currentUserState, String userAnswerString) throws Exception, Exception
 	{
+		StringTokenizer st = new StringTokenizer(userAnswerString, ".");
+		String parse_number = st.nextToken();
 		
-		if(currentUserState >= 3110)
+		
+		if(currentUserState == 3124)
 		{
-			StringTokenizer st = new StringTokenizer(userAnswerString, ".");
-			String parse_number = st.nextToken();
+			Terminal_Name = HomeController.getUserSavingList(user_key);
+			String terminal_name = Terminal_Name.get(Integer.parseInt(parse_number) - 1);
 			
+			System.out.println("terminal_name =" + terminal_name);
+			mb = new MessageButtonVO("터미널", "http://111.118.36.170:5001/myapp/?terminal_name=" + terminal_name);
+			photo = new PhotoVO();
+			photo.setUrl("http://cfile215.uf.daum.net/image/232F0C39525BDA410ACAE3");
+			photo.setWidth(640);
+			photo.setHeight(480);
+			messageVO.setPhoto(photo);
+			messageVO.setmessage_button(mb);
+			text =  "처음부터 다시 돌아갈려면 \"ㄱ\"를 누르세요." 
+					+ terminal_name + "를 선택하셨습니다.\n 길안내 여부를 받으시겠습니까? \n"
+					+ "1. 예 \n 2. 아니오.";
+		}
+		
+		
+		else if(currentUserState > 3121)
+		{
 			//System.out.println("parse_number = " + parse_number);
-			
 			text = detail_terminal(parse_number);
-			
-			if(currentUserState >= 3120)
-			{
-				Terminal_Name = HomeController.getUserSavingList(user_key);
-				String terminal_name = Terminal_Name.get(Integer.parseInt(parse_number) - 1);
-				
-				System.out.println("terminal_name =" + terminal_name);
-				mb = new MessageButtonVO("터미널", "http://111.118.36.170:5001/myapp/?terminal_name=" + terminal_name);
-				photo = new PhotoVO();
-				photo.setUrl("http://cfile215.uf.daum.net/image/232F0C39525BDA410ACAE3");
-				photo.setWidth(640);
-				photo.setHeight(480);
-				messageVO.setPhoto(photo);
-				messageVO.setmessage_button(mb);
-				text =  "처음부터 다시 돌아갈려면 \"ㄱ\"를 누르세요." 
-						+ terminal_name + "를 선택하셨습니다.\n 길안내 여부를 받으시겠습니까? \n"
-						+ "1. 예 \n 2. 아니오.";
-			}
-			
-			else
-				mb = null;
+			mb = null;
 		}
 		
 	
@@ -178,10 +176,7 @@ public class Terminal_Location extends KeyboardAndMessageVO{
 	        
 	        text = text + gettext(items, xml_start, xml_end);
 	        
-	       // System.out.println(text);
-	
-	       // setno(3120);
-	        
+
 	        return text;
 	}
 	
@@ -195,13 +190,10 @@ public class Terminal_Location extends KeyboardAndMessageVO{
 		{
 			JSONObject item = (JSONObject) array.get(i);
 			String city = (String) item.get("terminalnm");
-			
-		//	if(city.contains("터미널"))
-		//	{
-				Terminal_Name.add(city);
-				text = text + String.valueOf(index) + ". " + city + "\n";
-				index++;
-		//	}
+			Terminal_Name.add(city);
+			text = text + String.valueOf(index) + ". " + city + "\n";
+			index++;
+		
 		}
 		
 	//	HomeController.setUserSavingList("test", Terminal_Name);
