@@ -50,7 +50,7 @@ public class Terminal_Location extends KeyboardAndMessageVO{
 		String parse_number = st.nextToken();
 		
 		
-		if(currentUserState == 3124)
+		if(currentUserState == 3122)
 		{
 			Terminal_Name = HomeController.getUserSavingList(user_key);
 			String terminal_name = Terminal_Name.get(Integer.parseInt(parse_number) - 1);
@@ -64,12 +64,11 @@ public class Terminal_Location extends KeyboardAndMessageVO{
 			messageVO.setPhoto(photo);
 			messageVO.setmessage_button(mb);
 			text =  "처음부터 다시 돌아갈려면 \"ㄱ\"를 누르세요." 
-					+ terminal_name + "를 선택하셨습니다.\n 길안내 여부를 받으시겠습니까? \n"
-					+ "1. 예 \n 2. 아니오.";
+					+ terminal_name + "를 선택하셨습니다.";
 		}
 		
 		
-		else if(currentUserState > 3121)
+		else if(currentUserState == 3121)
 		{
 			//System.out.println("parse_number = " + parse_number);
 			text = detail_terminal(parse_number);

@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 
-import com.hanium.myapp.CurrentState_Templete;
 import com.hanium.myapp.HomeController;
 import com.hanium.myapp.KeyboardAndMessage_Templete;
 import com.haniumpkg.myapp.KeyboardAndMessageVO;
@@ -39,7 +38,7 @@ public class GPSController extends KeyboardAndMessage_Templete {
 		else if (currentUserState >= 3100) //터미널 위치 안내
 		{
 
-			if(currentUserState >= 3121) {
+			if(currentUserState >= 3101) {
 				terminal = new Terminal_Location(user_key, currentUserState, userAnswerString);
 				text = terminal.gettext();
 				text = text + "\n00. 뒤로가기";

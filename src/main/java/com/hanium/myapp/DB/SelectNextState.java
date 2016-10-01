@@ -45,7 +45,8 @@ public class SelectNextState {
 		
 		catch(Exception e)
 		{
-			if(HomeController.getUserSavingList(user_key).isEmpty())
+			
+			if(HomeController.getUserSavingList(user_key) == null)
 			{	
 				nextState = currentUserState;
 				return ;

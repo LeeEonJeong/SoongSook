@@ -30,6 +30,7 @@ public class RequestParsing {
 		    }
 		    
 		    requestParsing = sb.toString();
+		 //  System.out.println(requestParsing);
 	}
 	
 	public String getrequestParsing()
