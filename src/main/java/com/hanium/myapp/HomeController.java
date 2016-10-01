@@ -64,7 +64,7 @@ public class HomeController {
 		JSONParser parser = new JSONParser();
 		Object userObject = parser.parse(sessionContent.getrequestParsing());
 		JSONObject jsonObject = (JSONObject) userObject;
-		UserDBCheck userStateCheck = new UserDBCheck(request, jsonObject, logger, sqlSession); 
+		UserDBCheck userStateCheck = new UserDBCheck(jsonObject, sqlSession); 
 	
 		String parsingContent = (String) jsonObject.get("content");
 		String parsingUserkey = (String) jsonObject.get("user_key");
@@ -74,7 +74,7 @@ public class HomeController {
 		FunctionController functionController = new FunctionController(parsingUserkey);
 		
 		KeyboardAndMessageVO answerKeyboardAndMessage = 
-				functionController.getSystemAnswerMsgAndKeyboard(currentState, parsingContent, parsingUserkey, sqlSession);
+				functionController.getSystemAnswerMsgAndKeyboard(currentState, parsingContent, sqlSession);
 
 		UpdateDB update = new UpdateDB(parsingUserkey, functionController.getUpdatedUserState(), sqlSession);
 				

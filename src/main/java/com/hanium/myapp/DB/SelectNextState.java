@@ -3,33 +3,21 @@ package com.hanium.myapp.DB;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.StringTokenizer;
-
-import javax.servlet.http.HttpServletRequest;
-
 import org.apache.ibatis.session.SqlSession;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.ParseException;
-import org.slf4j.Logger;
+
 
 import com.hanium.myapp.HomeController;
 
-public class Selected_Next_State {
+public class SelectNextState {
 	private int nextState;
-	private String user_key;
-	
-	
-	public Selected_Next_State(int currentUserState, String userAnswerString, SqlSession sqlSession, String user_key) throws Exception
+
+	public SelectNextState(int currentUserState, String userAnswerString, SqlSession sqlSession, String user_key) throws Exception
 	{
 		int i = 0;
-		int AnswerNumber = 0;
+		int AnswerNumber = 0;   
 
-		StringTokenizer st = new StringTokenizer(userAnswerString, ".");
-		
 		
 		try {
-			String Parse_Answer_Number = (String) (userAnswerString.contains(".") ? 
-					st.nextToken() : userAnswerString);
 			
 			if(userAnswerString.equals("¿¹¸Å"))
 			{
@@ -51,10 +39,11 @@ public class Selected_Next_State {
 			
 			
 			else
-				AnswerNumber = Integer.parseInt(Parse_Answer_Number);
+				AnswerNumber = Integer.parseInt(userAnswerString);
 			
-		} catch(Exception e)
+		} 
 		
+		catch(Exception e)
 		{
 			if(HomeController.getUserSavingList(user_key).isEmpty())
 			{	
@@ -97,7 +86,7 @@ public class Selected_Next_State {
 			nextState = no;
 		}
 			
-		System.out.println("Selected_Next_state = " + nextState);
+		System.out.println("SelectNextState = " + nextState);
 	}
 	
 	public int getNextState() {return this.nextState;}
